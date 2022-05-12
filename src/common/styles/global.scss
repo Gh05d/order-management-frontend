@@ -1,0 +1,27 @@
+html,
+body {
+  height: 100%;
+  font-size: clamp(1em, calc(100vw * 4 / 75), 4em);
+  font-family: “Playfair Display”, “Didot”, "Times New Roman", Times, serif;
+  --hue: 0;
+  --saturation: 90%;
+  --lightness: 99%;
+}
+
+// Layout of the page
+#root {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+main {
+  flex: 1;
+  background-color: hsl(var(--hue) var(--saturation) var(--lightness));
+}
+
+// Default styles for elements
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
