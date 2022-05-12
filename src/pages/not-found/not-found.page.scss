@@ -1,0 +1,11 @@
+@use "../../common/styles/mixins";
+
+#not-found {
+  @include mixins.background-image("not-found.jpg");
+
+  .text {
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
+  }
+}

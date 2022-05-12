@@ -1,0 +1,9 @@
+.orders-list {
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+
+  & > * {
+    flex: 1 1 28rem;
+  }
+}

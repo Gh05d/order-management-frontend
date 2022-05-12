@@ -1,23 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./components/app/app.component";
-import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+import App from "./components/app/app.component";
 import Home from "./pages/home/home.page";
-import NotFound from "./pages/not-found/NotFound";
+import NotFound from "./pages/not-found/not-found.page";
+
+import reportWebVitals from "./reportWebVitals";
+import client from "./common/apollo-client";
+import { ApolloProvider } from "@apollo/client";
+import Orders from "./pages/orders/orders.page";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<Home />} />
+    <ApolloProvider client={client}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<Home />} />
+            <Route path="/orders" element={<Orders />} />
 
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </Router>
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Router>
+    </ApolloProvider>
   </React.StrictMode>
 );
 

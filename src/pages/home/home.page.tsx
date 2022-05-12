@@ -1,9 +1,12 @@
 import * as React from "react";
 
-interface Props {}
+import "./home.page.scss";
 
-const Home: React.FC<Props> = props => {
-  return <div>hi</div>;
-};
+const Home: React.FC<{}> = () => (
+  <section id="home">
+    <h1>Order Management System</h1>
+    <p>A miniature version of an order management system </p>
+  </section>
+);
 
 export default Home;

@@ -1,0 +1,14 @@
+@mixin background-image($url) {
+  position: relative;
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  height: 100%;
+  color: white;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+@mixin background-color {
+  background-color: hsl(var(--hue), var(--saturation), var(--lightness));
+}

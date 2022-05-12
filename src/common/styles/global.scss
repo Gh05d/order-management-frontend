@@ -1,11 +1,22 @@
 html,
 body {
   height: 100%;
-  font-size: clamp(1em, calc(100vw * 4 / 75), 4em);
   font-family: “Playfair Display”, “Didot”, "Times New Roman", Times, serif;
-  --hue: 0;
-  --saturation: 90%;
-  --lightness: 99%;
+}
+
+// Make math easier by using base 10
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  --header-height: 8rem;
+  --hue: 218;
+  --saturation: 21%;
+  --lightness: 93%;
+  --background-color: hsl(var(--hue), var(--saturation), var(--lightness));
+  background-color: var(--background-color);
 }
 
 // Layout of the page
@@ -17,11 +28,11 @@ body {
 
 main {
   flex: 1;
-  background-color: hsl(var(--hue) var(--saturation) var(--lightness));
+  padding: 1.6rem;
 }
 
 // Default styles for elements
 h1 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+  font-size: 3.2rem;
+  margin-bottom: 1.6rem;
 }

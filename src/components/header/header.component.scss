@@ -1,0 +1,55 @@
+@use "../../common/styles/mixins";
+
+#header {
+  @include mixins.background-color;
+  color: white;
+  --hue: 0;
+  --saturation: 100%;
+  --lightness: 44%;
+  display: grid;
+  grid-template-columns: 1fr auto 3fr;
+  grid-template-rows: var(--header-height);
+  align-items: center;
+  gap: 1.6rem;
+  padding-right: 1.6rem;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  span {
+    text-transform: uppercase;
+    font-weight: 700;
+    display: none;
+
+    &:last-of-type {
+      display: initial;
+    }
+  }
+
+  nav {
+    justify-self: end;
+
+    ul {
+      display: flex;
+      gap: 1.6rem;
+
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 60rem) {
+  #header > span {
+    display: initial;
+
+    &:last-of-type {
+      display: none;
+    }
+  }
+}
