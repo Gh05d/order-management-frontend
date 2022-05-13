@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_ORDERS = gql`
-  query getOrders($limit: Int) {
-    orders(limit: $limit) {
+  query getOrders($offset: Int, $limit: Int) {
+    orders(offset: $offset, limit: $limit) {
       _id
       state
       created

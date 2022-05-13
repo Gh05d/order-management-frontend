@@ -24,6 +24,7 @@ const Orders: React.FC<Props> = props => {
           <option>Order</option>
           <option>Customer</option>
           <option>Employee</option>
+          <option>Status</option>
         </select>
       </div>
 

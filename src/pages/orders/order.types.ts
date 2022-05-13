@@ -48,5 +48,6 @@ export interface OrdersData {
 }
 
 export interface OrdersVars {
+  offset?: number;
   limit?: number;
 }

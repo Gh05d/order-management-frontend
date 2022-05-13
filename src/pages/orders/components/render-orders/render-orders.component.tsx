@@ -1,29 +1,73 @@
 import * as React from "react";
 import { useQuery } from "@apollo/client";
 
-import Loading from "../../../../common/loading/loading.component";
-import Error from "../../../../common/error/error.component";
+import Loading from "../../../../components/loading/loading.component";
+import Error from "../../../../components/error/error.component";
 import OrderCard from "../order-card/order-card.component";
 
 import { GET_ORDERS } from "../../order.graphql";
 import { OrdersData, OrdersVars } from "../../order.types";
 import "./render-orders.component.scss";
+import { debounce } from "../../../../common/functions";
 
 const RenderOrders: React.FC<{}> = () => {
-  const { loading, error, data } = useQuery<OrdersData, OrdersVars>(GET_ORDERS);
+  const { loading, error, data, fetchMore } = useQuery<OrdersData, OrdersVars>(GET_ORDERS, {
+    variables: {
+      offset: 0,
+      limit: 100
+    },
+    notifyOnNetworkStatusChange: true
+  });
 
-  if (loading) return <Loading />;
+  // Keep a ref to current list to be able to update it in the future
+  // https://stackoverflow.com/questions/55265255/react-usestate-hook-event-handler-using-initial-state
+  const dataRef = React.useRef(data);
+  const loadingRef = React.useRef(loading);
+
+  React.useEffect(() => {
+    const debouncedScroll = debounce(handleScroll);
+    window.addEventListener("scroll", debouncedScroll);
+
+    return () => window.removeEventListener("scroll", debouncedScroll);
+  }, []);
+
+  function handleScroll(e: Event) {
+    const target: Document = e.target as Document;
+
+    if (
+      window.innerHeight + target.documentElement.scrollTop + 5 >=
+      target.documentElement.scrollHeight
+    ) {
+      if (!loadingRef?.current) {
+        fetchMore({
+          variables: {
+            offset: dataRef?.current?.orders.length || 0
+          }
+        });
+      }
+    }
+  }
+
+  if (loading && !data) return <Loading />;
   if (error) return <Error error={error} />;
 
   if (data?.orders?.length) {
+    dataRef.current = data;
+    loadingRef.current = loading;
+
     return (
       <ul className="orders-list">
         {data.orders.map(order => (
-          <OrderCard {...order} />
+          <li key={order._id}>
+            <OrderCard {...order} />
+          </li>
         ))}
+
+        {loading && <Loading text="Fetching orders..." />}
       </ul>
     );
   }
+
   return <div>Sorry, no orders yet</div>;
 };
 

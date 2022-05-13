@@ -14,6 +14,10 @@
     box-shadow: 3px 3px 2px 0 hsl(var(--hue), var(--saturation), var(--lightness));
   }
 
+  & > div:first-of-type {
+    font-weight: 700;
+  }
+
   .field-container {
     display: flex;
     justify-content: space-between;
