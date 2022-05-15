@@ -69,3 +69,13 @@ export const UPDATE_STATUS = gql`
     }
   }
 `;
+
+export const FETCH_HISTORY = gql`
+  query onFetchHistory($orderID: ID!) {
+    orderStatusHistory(orderID: $orderID) {
+      _id
+      status
+      createdAt
+    }
+  }
+`;

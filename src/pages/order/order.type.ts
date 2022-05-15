@@ -26,3 +26,16 @@ export interface UpdateStatusVars {
   orderID: string;
   status: "IN_PROGRESS" | "COMPLETE";
 }
+
+interface HistoryStatus {
+  _id: string;
+  status: "OPEN" | "IN_PROGRESS" | "COMPLETE";
+  createdAt: string;
+}
+export interface HistoryStatusData {
+  orderStatusHistory: HistoryStatus[];
+}
+
+export interface FetchHistoryVars {
+  orderID: string;
+}

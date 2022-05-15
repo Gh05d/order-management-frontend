@@ -12,8 +12,7 @@ const Header: React.FC = () => {
 
   const routes = [
     { route: "/", name: "Home" },
-    { route: "/orders", name: "Orders" },
-    { route: "/history", name: "History" }
+    { route: "/orders", name: "Orders" }
   ];
 
   function handleKeyPress(e: KeyboardEvent) {

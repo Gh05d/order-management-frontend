@@ -43,7 +43,6 @@ const Orders: React.FC<{}> = () => {
           />
 
           <select
-            defaultValue="customer"
             onChange={handlefilterOnChange}
             value={filterOn}
             aria-label="Select the filter value">
@@ -54,12 +53,7 @@ const Orders: React.FC<{}> = () => {
 
         <label>
           Sort orders by{" "}
-          <select
-            defaultValue="created"
-            value={sortBy}
-            onChange={handleSortChange}
-            aria-label="Sort orders"
-            id="sort">
+          <select value={sortBy} onChange={handleSortChange} aria-label="Sort orders" id="sort">
             <option value="created">Creation date</option>
             <option value="customer">Customer name</option>
             <option value="employee">Employee name</option>

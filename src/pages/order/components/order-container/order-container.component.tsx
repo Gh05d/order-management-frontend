@@ -11,6 +11,7 @@ import "./order-container.component.scss";
 import SelectEmployee from "../select-employee/select-employee";
 import { createDateString } from "../../../../common/functions";
 import TransitionButton from "../transition-button/transition-button.component";
+import ProductHistory from "../product-history/product-history";
 
 interface Props {
   id: string;
@@ -77,6 +78,8 @@ const Order: React.FC<Props> = ({ id }) => {
       </div>
 
       <ProcuctList items={data.order.items} />
+
+      <ProductHistory orderID={id} />
     </div>
   );
 };

@@ -19,7 +19,7 @@ const FetchOrders: React.FC<Props> = ({ filterBy, filterOn, sortBy }) => {
   const { loading, error, data, fetchMore } = useQuery<OrdersData, OrdersVars>(GET_ORDERS, {
     variables: {
       offset: 0,
-      limit: 2000
+      limit: 100
     },
     notifyOnNetworkStatusChange: true
   });
