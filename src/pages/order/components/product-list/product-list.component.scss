@@ -1,0 +1,9 @@
+.product-list {
+  display: flex;
+  flex-flow: column;
+  gap: 1.6rem;
+
+  & > * {
+    max-width: 50rem;
+  }
+}

@@ -12,3 +12,27 @@
 @mixin background-color {
   background-color: hsl(var(--hue), var(--saturation), var(--lightness));
 }
+
+@mixin text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin card {
+  --hue: 0;
+  --saturation: 80%;
+  --lightness: 30%;
+  background: white;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-flow: column;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    box-shadow: 3px 3px 2px 0 hsl(var(--hue), var(--saturation), var(--lightness));
+  }
+}

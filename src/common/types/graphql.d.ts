@@ -1,16 +1,16 @@
-export interface EmployeeShort {
+interface EmployeeShort {
   _id: string;
   firstName: string;
   lastName: string;
 }
 
-export interface CustomerShort {
+interface CustomerShort {
   _id: string;
   firstName: string;
   lastName: string;
 }
 
-export interface Product {
+interface Product {
   _id: string;
   name: string;
   price: number;
@@ -18,36 +18,28 @@ export interface Product {
   description: string;
 }
 
-export interface ProductOrder {
+interface ProductOrder {
   product: Product;
   quantity: number;
 }
 
-export interface Address {
+interface Address {
   street?: string;
+  houseNumber?: string;
   zip: string;
   city: string;
   country: string;
   misc?: string;
 }
 
-export interface Order {
+interface Order {
   _id: string;
-  state: "OPEN" | "IN_PROGRESS" | "COMPLETE";
+  status: "OPEN" | "IN_PROGRESS" | "COMPLETE";
   totalPrice: number;
   address: Address;
-  updated?: string;
-  created: string;
+  updatedAt: string;
+  createdAt: string;
   items: ProductOrder[];
-  employee: EmployeeShort;
+  employee?: EmployeeShort;
   customer: CustomerShort;
-}
-
-export interface OrdersData {
-  orders: Order[];
-}
-
-export interface OrdersVars {
-  offset?: number;
-  limit?: number;
 }

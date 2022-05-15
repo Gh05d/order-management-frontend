@@ -11,3 +11,10 @@ export const debounce = <T extends (...args: any[]) => ReturnType<T>>(
     }, timeout);
   };
 };
+
+export function createDateString(timestamp: string): string {
+  return new Date(+timestamp).toLocaleDateString("de-DE", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}

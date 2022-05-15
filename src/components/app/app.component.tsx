@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../header/header.component";
 import Footer from "../footer/footer.component";
 
-import "../../common/styles";
+import "../../common/styles/global.scss";
 import "./app.component.scss";
 
 const App: React.FC = () => {

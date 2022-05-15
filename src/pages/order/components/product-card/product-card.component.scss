@@ -1,0 +1,41 @@
+@use "../../../../common/styles/mixins.scss";
+
+.product-card {
+  @include mixins.card;
+  padding: 0 0.8rem 0 0;
+  flex-flow: row;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: initial;
+
+  img {
+    max-width: 8rem;
+    max-height: 8rem;
+    object-fit: contain;
+  }
+
+  div:first-of-type {
+    flex: 1;
+  }
+
+  div:last-of-type {
+    span:last-of-type {
+      align-self: center;
+    }
+  }
+
+  .column {
+    display: flex;
+    flex-flow: column;
+
+    .label {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: unset;
+  }
+}

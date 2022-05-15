@@ -1,3 +1,5 @@
+@import "reset.scss";
+
 html,
 body {
   height: 100%;
@@ -7,19 +9,22 @@ body {
 // Make math easier by using base 10
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 body {
   font-size: 1.6rem;
   --header-height: 8rem;
+  --button-padding: 1rem 2rem;
   --hue: 218;
   --saturation: 21%;
   --lightness: 93%;
-  --background-color: hsl(var(--hue), var(--saturation), var(--lightness));
-  background-color: var(--background-color);
+  background-color: hsl(var(--hue), var(--saturation), var(--lightness));
 }
 
-// Layout of the page
+/*************************************** 
+* Layout of the page
+****************************************/
 #root {
   height: 100%;
   display: flex;
@@ -31,8 +36,22 @@ main {
   padding: 1.6rem;
 }
 
-// Default styles for elements
-h1 {
-  font-size: 3.2rem;
-  margin-bottom: 1.6rem;
+@import "default.scss";
+
+/*************************************** 
+* Common classes
+****************************************/
+.link-container {
+  color: black;
+  text-decoration: none;
+}
+
+.card-list {
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+
+  & > * {
+    flex: 1 1 28rem;
+  }
 }

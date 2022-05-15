@@ -4,9 +4,9 @@ export const GET_ORDERS = gql`
   query getOrders($offset: Int, $limit: Int) {
     orders(offset: $offset, limit: $limit) {
       _id
-      state
-      created
-      updated
+      status
+      createdAt
+      updatedAt
       employee {
         _id
         firstName
@@ -16,13 +16,6 @@ export const GET_ORDERS = gql`
         _id
         firstName
         lastName
-      }
-      items {
-        quantity
-        product {
-          _id
-          name
-        }
       }
     }
   }

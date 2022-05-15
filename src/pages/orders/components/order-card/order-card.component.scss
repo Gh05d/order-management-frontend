@@ -1,18 +1,7 @@
-.order-card {
-  --hue: 0;
-  --saturation: 80%;
-  --lightness: 30%;
-  background: white;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  display: flex;
-  flex-flow: column;
-  transition: 300ms ease-in-out;
+@use "../../../../common/styles/mixins.scss";
 
-  &:hover,
-  &:focus {
-    box-shadow: 3px 3px 2px 0 hsl(var(--hue), var(--saturation), var(--lightness));
-  }
+.order-card {
+  @include mixins.card;
 
   & > div:first-of-type {
     font-weight: 700;

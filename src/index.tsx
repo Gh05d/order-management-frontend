@@ -10,6 +10,7 @@ import reportWebVitals from "./reportWebVitals";
 import client from "./common/apollo-client";
 import { ApolloProvider } from "@apollo/client";
 import Orders from "./pages/orders/orders.page";
+import Order from "./pages/order/order.page";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
@@ -20,6 +21,7 @@ root.render(
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/order/:id" element={<Order />} />
 
             <Route path="*" element={<NotFound />} />
           </Route>

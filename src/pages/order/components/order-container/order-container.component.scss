@@ -1,0 +1,43 @@
+.order-container {
+  display: flex;
+  flex-flow: column;
+  gap: 1.6rem;
+
+  & > div {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  #address address {
+    max-width: fit-content;
+    background: white;
+    border-radius: 0.4rem;
+    padding: 0.8rem;
+
+    div:first-of-type {
+      margin-bottom: 0.8rem;
+    }
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .order-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "order-container status"
+      "created status-error"
+      "updated address"
+      "assignee address"
+      "total address"
+      "items items";
+
+    $areas: (order-container, status, created, updated, address, assignee, total, items);
+
+    @each $area in $areas {
+      ##{$area} {
+        grid-area: $area;
+      }
+    }
+  }
+}

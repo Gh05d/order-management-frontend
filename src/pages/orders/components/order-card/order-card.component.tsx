@@ -1,38 +1,38 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
+import { createDateString } from "../../../../common/functions";
 
-import { Order } from "../../order.types";
 import "./order-card.component.scss";
 
 const OrderCard: React.FC<Order> = props => {
-  const [createdDate, createdTime] = props.created.split("T");
-  const [normalizedCreatedTime] = createdTime.split(".");
-
-  if (props.updated) {
-    var [updatedDate, updatedTime] = props.updated.split("T");
-    var [normalizedUpdatedTime] = updatedTime.split(".");
-  }
+  const createdTime = createDateString(props.createdAt);
+  const updatedTime = createDateString(props.updatedAt);
 
   const fields = [
-    { label: "", value: props.state },
+    { label: "", value: props.status },
     { label: "Number", value: props._id },
-    { label: "Created", value: `${createdDate} ${normalizedCreatedTime}` },
+    { label: "createdAt", value: `${createdTime}` },
+    { label: "updatedAt", value: `${updatedTime}` },
     {
-      label: "Updated",
-      value: props.updated && `${updatedDate} ${normalizedUpdatedTime}`
+      label: "Assigned to",
+      value: props.employee
+        ? `${props.employee.firstName} ${props.employee.lastName}`
+        : "Not assigned"
     },
-    { label: "Assigned to", value: `${props.employee.firstName} ${props.employee.lastName}` },
     { label: "Customer", value: `${props.customer.firstName} ${props.customer.lastName}` }
   ];
 
   return (
-    <div className="order-card">
-      {fields.map(field => (
-        <div className="field-container" key={field.label}>
-          <span className="label">{field.label}: </span>
-          <span>{field.value}</span>
-        </div>
-      ))}
-    </div>
+    <Link className="link-container" to={`/order/${props._id}`}>
+      <div className="card order-card">
+        {fields.map(field => (
+          <div className="field-container" key={field.label}>
+            <span className="label">{field.label}: </span>
+            <span>{field.value}</span>
+          </div>
+        ))}
+      </div>
+    </Link>
   );
 };
 
