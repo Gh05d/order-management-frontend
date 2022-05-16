@@ -58,7 +58,7 @@ const RenderOrders: React.FC<Props> = ({ filterBy, filterOn, sortBy, loading, or
               return order?.customer.lastName.toLowerCase().includes(filterBy.toLowerCase());
 
             case "employee":
-              return order?.employee!.lastName.toLowerCase().includes(filterBy.toLowerCase());
+              return order?.employee?.lastName.toLowerCase().includes(filterBy.toLowerCase());
 
             default:
               return false;
